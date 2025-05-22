@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="p-3 container-fluid fixed-top justify-content-center" style="background-color:#3db7e0;">
+            <a class="fs-3 navbar-brand text-white mx-5">Nuestra Página</a>
+        </div>
+    </nav>
+
+    <!-- Carrusel centrado -->
+    <div class="container d-flex justify-content-center mt-5 pt-5">
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="Fotos/espejoUni.jpeg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="Fotos/SUSHI.jpeg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="Fotos/tierraBurrito.jpeg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Sección de acceso -->
+    <div class="container text-center mt-4">
+        <h3 class="text-danger">Para poder acceder tienes que responder una pregunta 🫵🏽</h3>
+        <h3>Que sigue a la siguiente frase:"</h3>
+        <h3 class="text-warning">"Melo ...."</h3>
+        <form action="login.php" method="POST">
+            <input type="text" name="password" class="form-control w-50 mx-auto mt-3" placeholder="Responde bebé">
+            <button type="submit" class="btn btn-primary mt-2">Acceder</button>
+        </form>
+
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $password = $_POST["password"];
+
+            if ($password === "caramelo" || $password === "Caramelo" || $password === "CARAMELO") {
+                header("Location: index.php"); // Redirige a la página principal
+                exit();
+            } else {
+                echo '<p class="text-danger mt-2">Contraseña incorrecta, intenta de nuevo.</p>';
+            }
+        }
+        ?>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
