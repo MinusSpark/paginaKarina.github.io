@@ -42,26 +42,26 @@
     <!-- Sección de acceso -->
     <div class="container text-center mt-4">
         <h3 class="text-danger">Para poder acceder tienes que responder una pregunta 🫵🏽</h3>
-        <h3>Que sigue a la siguiente frase:"</h3>
+        <h3>Qué sigue a la siguiente frase:</h3>
         <h3 class="text-warning">"Melo ...."</h3>
-        <form action="login.php" method="POST">
-            <input type="text" name="password" class="form-control w-50 mx-auto mt-3" placeholder="Responde bebé">
-            <button type="submit" class="btn btn-primary mt-2">Acceder</button>
-        </form>
+        
+        <input type="text" id="passwordInput" class="form-control w-50 mx-auto mt-3" placeholder="Responde bebé">
+        <button onclick="validarAcceso()" class="btn btn-primary mt-2">Acceder</button>
+        <p id="mensajeError" class="text-danger mt-2" style="display: none;">Contraseña incorrecta, intenta de nuevo.</p>
 
-        <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $password = $_POST["password"];
+    </div>
 
-            if ($password === "caramelo" || $password === "Caramelo" || $password === "CARAMELO") {
-                header("Location: index.php"); // Redirige a la página principal
-                exit();
+    <script>
+        function validarAcceso() {
+            var contraseña = document.getElementById("passwordInput").value.toLowerCase();
+
+            if (contraseña === "caramelo") {
+                window.location.href = "index.html"; // Redirige a la página deseada en GitHub Pages
             } else {
-                echo '<p class="text-danger mt-2">Contraseña incorrecta, intenta de nuevo.</p>';
+                document.getElementById("mensajeError").style.display = "block"; // Muestra el mensaje de error
             }
         }
-        ?>
-    </div>
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
